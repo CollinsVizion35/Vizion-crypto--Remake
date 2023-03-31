@@ -1,0 +1,3171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Vizion Crypto Live site</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Roboto|Montserrat|Oswald|PT+Sans|">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+    <!--Remix icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Bootstrap css-->
+    
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Swiper.js styles -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <!--custom styles-->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.9.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.9.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    
+  </head>
+
+<style>
+    /*custom proprties*/
+:root {
+    --light-color: #fff;
+    --light-color-alt: #119da4;
+    --header-color: #d7d9ce;
+    --primary-background-color: #040107;
+    --secondary-background-color: #135058;
+    --hover-light-color: var(--light-color);
+    --hover-dark-color:var(--primary-background-color);
+    --gradient-color: linear-gradient(
+        115deg, #271b11, #d3c89c, #523737, #ee8787, #08083b);
+    --transparent-light-color: rgba(215, 217, 206, .05);
+    --transparent-dark-color: rgba(0,0,0,.75);
+    /* --font-family: 'poppins', sans-serif; */
+    --font-size-xsm: 1.2rem;
+    --font-size-sm: 1.6rem;
+    --font-size-md: 2.4rem;
+    --font-size-lg: 3rem;
+    --font-size-xl: 4rem;
+    --gap: 2rem;
+    --margin-sm: 2rem;
+    --margin-md: 3rem;
+    --item-min-height-sm: 20rem;
+    --item-min-height-md: 30rem;
+}
+/*base style*/
+* {
+    margin: .5em;
+
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /*font-size: 10px;*/
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "PT Sans";
+    font-size: 1.5em;
+    color: var(--light-color-alt);
+    background-color: var(--primary-background-color);
+    letter-spacing: 1px;
+    transition: background-color .25s, color .25s;
+    overflow-x: hidden !important;
+    margin: -5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+input,
+button {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+i {
+    font-size: var(--font-size-md);
+}
+/*  theme color change*/
+body.light-theme{
+    --light-color: #0c7489;
+    --light-color-alt: #13505b;
+    --primary-background-color: #d7d9ce;
+    --secondary-background-color: #fff;
+    --hover-light-color: #fff;
+    --transparent-light-color: rgba(4, 1, 7, .05);
+    --transparent-dark-color: #119da4;
+    --header-color: #d7d9ce;
+}
+
+/*Reusable Classes*/
+.container {
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.place-items-center {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen-sm-hidden {
+    display: none;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.section{
+    padding-block: 5rem;
+}
+
+/*navbar*/
+.navbar {
+    margin: 0;
+    background-color: transparent;
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    float: right;
+    margin-right: -20px;
+    margin-left: auto;
+}
+
+.nav {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.nav2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    padding-inline: 10px;
+    margin-left: auto;
+}
+
+.logo {
+    margin: 0;
+    font-size: medium;
+    color: #119da4;
+}
+
+.menu {
+    margin: 0;
+    position: absolute;
+    /* text-align: center; */
+    top: 5.5em;
+    /* right: 1.5rem; */
+    width: 100vw;
+    /* padding: 1.5rem; */
+    padding-block: 1em;
+    background-color: var(--secondary-background-color);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .25s ease-in;
+}
+
+.list {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.menu > .list {
+    margin: 0;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.product-arrow {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-arrow i {
+    margin: 0;
+    font-size: 2em;
+}
+
+.arrow {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.products {
+    margin: 0;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: .5em 2em;
+}
+
+.products li{
+    margin: 0;
+    width: 200%;
+}
+
+.products li:hover{
+    color: #119da4;
+}
+
+.pr {
+    margin: 0;
+    position: relative;
+}
+
+.pr:hover .arrow {
+    transform: rotate(90deg);
+}
+
+.pr:hover .products{
+    display: flex;
+}
+
+.close-menu-icon {
+    margin: 0;
+    display: none;
+}
+
+.btn {
+    margin: 0;
+    cursor: pointer;
+}
+
+.list-item,
+.list-link {
+    width: fit-content;
+    height: inherit;
+}
+
+.list-link:hover {
+    color: #119da4;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+}
+
+.moon-icon {
+    display: none;
+}
+
+.light-theme .sun-icon {
+    display: none;
+}
+
+.light-theme .moon-icon {
+    display: block;
+}
+/*navbar javascript styles*/
+.navbar.activated {
+    box-shadow: 0 1px .5rem var(--transparent-light-color);
+}
+
+.menu.activated {
+    box-shadow: 1px 1px 1rem var(--transparent-light-color);
+    opacity: 1;
+    transform: scale(1);
+    z-index: 9999;
+}
+
+.menu-toggle-icon.activated .open-menu-icon {
+    display: none;
+}
+
+.menu-toggle-icon.activated .close-menu-icon {
+    display: block;
+}
+
+
+
+
+
+/* navbar-header */
+aside {
+    height: 100vh;
+}
+
+.allHeaders {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100vw;
+}
+
+.navbar-header {
+    margin: 0;
+    width: 40vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    padding: 0 4%;
+    color: var(--light-color);
+    background-color: var(--transparent-light-color);
+    z-index: 99999999999;
+}
+
+.navbar-header2 {
+    margin: 0;
+    width: 60vw;
+    height: 110vh;
+    background-position: center;
+    background-size: cover;
+    padding: 0 4%;
+    color: var(--header-color);
+    background-image: url(./header\ wallpaper.jpg);
+    object-position: center;
+}
+
+header {
+    margin: 0;
+    padding-top: 4em;
+    gap: 1em;
+    text-align: center;
+    height: 90vh;
+    z-index: 9999999999;
+}
+
+header .titles {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    margin-left: 10px;
+}
+
+header .title-buy {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .5em;
+    height: fit-content;
+}
+
+header .title .buy-sell-header {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.b {
+    margin: 0;
+    animation: b .2s 1 ease-in;
+}
+
+@keyframes b {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+.u {
+    margin: 0;
+    animation: u .2s 1 ease-in;
+    animation-delay: 0.1s;
+}
+
+@keyframes u {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+.y {
+    margin: 0;
+    animation: y .2s 1 ease-in;
+    animation-delay: 0.2s;
+}
+
+@keyframes y {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+header .titles h2 {
+    margin: 0;
+    font-size: 4vh;
+    /* text-transform: capitalize; */
+}
+
+header .title-descrip {
+    margin: 0;
+    font-size: 2vh;
+    margin-block: 3em;
+    height: fit-content;
+
+}
+
+header .get-started {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    background-color: #119da4;
+    color: var(--primary-background-color);
+    padding: .5em 1em;
+    border-radius: 10px;
+    margin-top: .7vh;
+    width: max-content;
+    margin-left: 10vw;
+    animation: getStarted .5s 1 ease-in;
+}
+
+@keyframes getStarted {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.get-started:hover {
+    background-color: #d7d9ce;
+    color: var(--primary-background-color);
+}
+
+.top-crypto {
+    margin: 0;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.coin {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 1em 1.5em;
+    border: none;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+    color: #0c7489;
+    gap: .2em;
+}
+
+.coin:hover {
+    margin: 0;
+    transform: scale(1.1);
+}
+
+.coin img {
+    margin: 0;
+    width: 40px;
+    margin-right: 10px;
+
+}
+
+
+
+/* what is vizion */
+
+.whatIsVizion {
+    background-color: var(--primary-background-color);
+    display: flex;
+    color: #135058;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3em;
+    margin-block: var(--margin-md);
+    margin-top: 5em;
+}
+
+.vizion-descrip {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--margin-md);
+    padding-inline: var(--margin-md);
+}
+
+.vizion-descrip-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--light-color-alt);
+    gap: 1em;
+    padding-block: 3em;
+    margin-block: var(--margin-md);
+}
+
+.vizion-descrip-title {
+    font-size: 1.5em;
+}
+
+.vizion-descrip-box {
+    /* display: flex; */
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1em;
+}
+
+.crypto-wp-1 {
+    
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
+.slide-in {
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.slide-in.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide-out {
+    transform: translateX(50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.slide-out.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.jump-in {
+    transform: translateY(50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.jump-in.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.descrip-box {
+    background-color: #119da4;
+    color: var(--primary-background-color);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5em;
+}
+
+.descrip-box img {
+    width: 50px;
+}
+
+
+/* price-column */
+
+.price-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.price-column-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    padding-block: 1.5em;
+    padding-inline: 1em;
+}
+
+.price-column-title .title {
+    color: #135058;
+    font-size: .8em;
+}
+
+.popular-coins {
+    cursor: pointer;
+    color: var(--light-color-alt);
+    background-color: var(--transparent-light-color);
+    padding: .5em;
+    border-radius: 8px;
+}
+
+.coin-title-color {
+    
+    background-color: green;
+}
+
+.top-Gainers {
+    cursor: pointer;
+    color: var(--light-color-alt);
+}
+
+.top-losers {
+    cursor: pointer;
+    color: var(--light-color-alt);
+    padding: .5em;
+    border-radius: 8px;
+}
+
+.rank .title {
+    cursor: pointer;
+}
+
+.rank .title:hover {
+    background-color: rgba(255, 255, 255, .05);
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    height:  2em;
+    width:  8em;
+    border-radius: 8px;
+}
+
+
+
+.coin-box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+}
+
+.coin-box ul {
+    /* position: absolute; */
+    padding-inline: 1em;
+    margin-left: 5em;
+}
+
+.coin-box ul li {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-block: 1.5em;
+}
+
+.coin-box ul li:hover {
+    background-color: rgba(255, 255, 255, .05);
+    border-radius: 8px;
+}
+
+.popularCoinImg {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-box ul li .price-name {
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-box ul li .crypto-short {
+    width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-box ul li .price {
+    width: 8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-Gainers {
+    display: none;
+}
+
+.price-column-box {
+    position: absolute;
+    display: flex;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+    width: fit-content;
+    font-size: .7em;
+}
+
+.price-column-box {
+    position: relative;
+}
+
+.price-column-box.activated {
+    display: none;
+}
+.hrsChart24 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7em;
+}
+.ri-arrow-up-s-fill {
+    color: #00FF00;
+    font-size: 3em;
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+}
+
+.ri-arrow-down-s-fill {
+    color: red;
+    font-size: 3em;
+    margin-top: -5px;
+    position: absolute;
+    top: 0;
+}
+
+.arrowIndicate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    margin: 0;
+    width: 4em;
+}
+.invisible {
+    visibility: hidden;
+}
+
+
+
+/* .tables {
+    margin-top: ;
+} */
+
+.table {
+    background-color:transparent;
+    position: static;
+    overflow-x: scroll;
+}
+.table thead th {
+    color: #946c00;
+}
+.table tbody {
+    background-color: transparent;
+}
+
+#leaderboard #cryptocurrencies {
+    position: static;
+}
+
+.cryptocurrency {
+    position: static;
+}
+
+#leaderboard #cryptocurrencies tr {
+    display:block;
+    /* clear: both; */
+    position: absolute;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#leaderboard #cryptocurrencies tr:hover {
+    background-color: rgba(255, 255, 255, .05);
+    transition: none;
+}
+
+.rank{
+    width: 60px;
+}
+.name{
+    width: 200px;
+}
+.image{
+    width: 40px;
+}
+.symbol{
+    width: 80px;
+}
+.price{
+    width: 100px;
+}
+.market_cap{
+    width: 150px;
+}
+.circulating_supply{
+    width: 170px;
+}
+.volume_24h{
+    width: 140px;
+}
+.percent_change_24h{
+    width: 100px;
+}
+
+.cryptocurrency {
+    text-align: center;
+    border: 1px solid var(--light-color-alt);
+}
+
+.cryptocurrency .symbol{
+    text-transform: uppercase;
+}
+
+.cryptocurrency .image{
+    width: 30px;
+    height: 30px;
+}
+
+.cryptocurrency .rank {
+    padding-right: 20px;
+}
+
+#leaderboard {
+    display: none;
+    position: relative; 
+    height: 3445px;
+    margin-inline: auto;
+}
+
+#leaderboard2 {
+    display: none;
+    position: relative;
+    /* margin-top: px; */
+    margin-inline: auto;
+    height: 3445px;
+    font-size: 0.4em;
+}
+
+#leaderboard.activated {
+    display: table;
+}
+
+#leaderboard2.activated {
+    display: table;
+}
+
+#leaderboard2 #cryptocurrencies2 tr {
+    display: block;
+    /* clear: both; */
+    position: absolute;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#leaderboard2 #cryptocurrencies2 tr:hover {
+    background-color: rgba(255, 255, 255, .05);
+    transition: none;
+}
+
+/* #leaderboard{
+    position: relative; 
+    height: 3445px;
+    margin-inline: auto;
+}
+
+#leaderboard2 {
+    position: relative;
+    margin-top: -3445px;
+    margin-inline: auto;
+    height: 3445px;
+} */
+
+.older-posts-grid-wrapper {
+    grid-template-columns: repeat(2,1fr);
+    margin: 0;
+}
+
+.powererd-cr {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cryto chart today */
+
+.cryptoChartToday {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: var(--gap);
+    margin: 0;
+}
+
+.cryptoChartLight,
+.cryptoChartDark {
+    width: 90vw;
+    height: 70vh;
+    border: none;
+    margin: 0;
+}
+
+.active {
+    display: none;
+}
+
+
+/* how to use */
+.How-to-use {
+    width: 75%;
+    color: #135058;
+    padding: 2em;
+    margin: auto;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+}
+
+.How-to-use-title {
+    font-size: 2em;
+}
+
+.How-to-use-descript {
+    margin-block: 1em;
+    color: #119da4;
+    font-family: "Roboto";
+}
+
+.create-account-how-descript {
+    font-family: "Roboto";
+}
+
+.create-account-how-img {
+    width: 10vw;
+    height: 15vh;
+    border: 3px solid #135058;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.how-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.create-account-how {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    gap: 3em;
+}
+
+.create-account-how-spacer {
+    transform: rotate(90deg);
+    width: 1em;
+    margin-left: 22vw;
+}
+
+.create-account-how-spacer2 {
+    transform: rotate(90deg);
+    width: 1em;
+    margin-left: 24vw;
+}
+
+.ri-guide-line {
+    font-size: 2em;
+}
+
+.ri-user-add-line,
+.ri-refund-line,
+.ri-funds-line {
+    font-size: 2em;
+}
+
+/* web-stat */
+.web-stat {
+    width: 75%;
+    padding: 2em;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+}
+
+.stat h1{
+    font-size: 3em;
+}
+
+/* older post */
+.article {
+    position: relative;
+    min-height: var(--item-min-height-md);
+}
+
+.section-title {
+    margin-bottom: 2em;
+    color: var(--light-color-alt);
+}
+
+.article-image {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .25s;
+}
+
+.article-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--primary-background-color);
+    color: brown;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.article-data-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem 1.5rem;
+    color: rgba(255,255,255);
+    background-color: var(--transparent-dark-color);
+    z-index: 10;
+    width: 100%;
+    transition: background-color .5s;
+}
+
+.article:hover .article-data-container {
+    background-color: var(--hover-dark-color);
+    color: var(--hover-light-color);
+}
+
+.article:hover .article-data-spacer {
+    background-color: var(--hover-light-color);
+}
+.article:hover .article-title {
+    color: var(--hover-light-color);
+}
+
+.article-description {
+    color: var(--light-color);
+}
+
+.article-data {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    font-size: var(--font-size-xsm);
+    margin-bottom: 1rem;
+    opacity: .6;
+}
+
+.article-data-spacer {
+    width: .5rem;
+    height: .5rem;
+    background-color: var(--light-color-alt);
+    transform: rotate(45deg);
+}
+
+.title {
+    color: var(--light-color);
+}
+
+.article-title {
+    font-size: var(--font-size-md);
+}
+
+.older-posts {
+    position: relative;
+    margin: auto;
+}
+
+.older-posts-grid-wrapper {
+    margin: 0;
+    gap: var(--gap);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.older-posts-article-image-wrapper,
+.older-posts .article {
+    margin: 0;
+    min-height: var(--item-min-height-sm);
+}
+
+.older-posts .article {
+    margin: 0;
+    background-color: var(--secondary-background-color);
+}
+
+.older-posts-article-image-wrapper {
+    margin: 0;
+    position: relative;
+}
+
+.older-posts-grid-wrapper .article-data-container {
+    margin: 0;
+    position: static;
+    background-color: transparent;
+}
+
+.older-posts-grid-wrapper .article-title {
+    margin: 0;
+    margin-bottom: var(--margin-sm);
+}
+
+.see-more-container {
+    margin-top: var(--margin-md);
+}
+
+.see-more-btn {
+    text-transform: uppercase;
+    color: var(--light-color-alt);
+}
+
+.see-more-btn:hover {
+    color: rgba(12, 116, 137, .7);
+}
+
+.see-more-btn i {
+    transition: transform .25s;
+}
+
+.see-more-btn:hover i{
+    transform: rotateX(45deg) translateX(.5rem);
+}
+
+/* Autoplay swiper */
+
+section.testimonial {
+    margin: auto;
+    margin-top: 5em;
+    position: relative;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+    width: 100%;
+    height: 40vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 9999;
+}
+
+.swiper-slide .swiper-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.swiper-slide .swiper-image {
+    width: 75px;
+    height: 75px;
+    margin: 0;
+    margin-top: -15vh;
+    border-radius: 50px;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+div.swiper-5 div.swiper-slide {
+    margin: 0;
+    margin-top: -3vh;
+  padding: 3em 1em;
+  color: var(--light-color-alt);
+  text-align: center;
+  font-size: .6em;
+  outline: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+div.swiper-5 .swiper-button-prev {
+    margin: 0;
+  background: none;
+  color: #0c7489;
+}
+div.swiper-5 .swiper-button-prev:before {
+    margin: 0;
+  position: absolute;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+}
+div.swiper-5 .swiper-button-next {
+    margin: 0;
+  background: none;
+  color: #0c7489;
+}
+div.swiper-5 .swiper-button-next:before {
+    
+    margin: 0;
+  position: absolute;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.written-testimony{
+    font-size: .5em;
+}
+
+.written-testimony span i {
+    margin: 0;
+    font-size: 3.5rem;
+}
+
+.testi-liner {
+    margin: 0;
+    height: 3px;
+    width: 10vw;
+    border-radius: 50px;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+}
+
+/* footer */
+.footer {
+    margin: 0;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+    margin-top: 7.5%;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+.footer .company-data .logo {
+    color: var(--light-color);
+}
+
+.footer-container {
+    gap: var(--gap);
+}
+
+.company-data {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+}
+
+.company-description {
+    margin-block: var(--margin-sm);
+    max-width: 75%;
+}
+
+.social-media {
+    margin-bottom: var(--margin-md);
+}
+
+.copyright-notice {
+    opacity: .6;
+}
+
+.footer-list {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-list .list-item a:hover {
+    color: var(--light-color-alt);
+}
+
+.footer-title {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    margin-bottom: var(--font-size-sm);
+}
+
+/* scroll bar styles */
+::-webkit-scrollbar {
+    width: .7rem
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--light-color-alt);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--transparent-dark-color);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-background-color);
+}
+  
+
+
+@media screen and (min-width: 768px){ 
+/* header */
+
+header {
+    padding-top: 4vw;
+    gap: 1em;
+    text-align: left;
+    font-size: 1.5vw;
+}
+
+header .titles {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+    text-align: center;
+}
+
+header .title-buy {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: left; */
+}
+
+header .title .buy-sell-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.b {
+    animation: b .2s 1 ease-in;
+}
+
+@keyframes b {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+.u {
+    animation: u .2s 1 ease-in;
+    animation-delay: 0.1s;
+}
+
+@keyframes u {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+.y {
+    animation: y .2s 1 ease-in;
+    animation-delay: 0.2s;
+}
+
+@keyframes y {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+header .titles h2 {
+    font-size: 5vh;
+    /* text-transform: capitalize; */
+    text-align: center;
+}
+
+header .title-descrip {
+    font-size: 3vh;
+    margin-top: .7em;
+
+}
+
+header .get-started {
+    display: flex;
+    align-items: center;
+    background-color: #119da4;
+    padding: .5em 1em;
+    border-radius: 10px;
+    margin-inline: 0;
+    margin-top: .5vh;
+    animation: getStarted .5s 1 ease-in;
+    justify-content: center;
+}
+
+@keyframes getStarted {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.get-started:hover {
+    background-color: #d7d9ce;
+    color: #119da4;
+}
+
+.header2 {
+    display: none;
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 1em 1.5em;
+    width: 20vw;
+    border: none;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+    color: #0c7489;
+    gap: .2em;
+}
+
+.coin:hover {
+    transform: scale(1.1);
+}
+
+.coin img {
+    width: 40px;
+    margin-right: 10px;
+
+}
+
+.top-crypto {
+    margin: auto;
+}
+
+.coin-box {
+    width: 100%;
+}
+
+.price-column-box {
+    /* margin-left: -150px;
+    margin-right: auto; */
+    width: 100vw;
+}
+
+/* .coin h3 {
+} */
+
+.older-posts .article {
+    margin: 0;
+    grid-template-columns: 25rem 1fr;
+}
+
+.older-posts-article-image-wrapper {
+    margin: 0;
+    height: auto;
+}
+
+.footer-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .menu {
+        position: initial;
+        width: initial;
+        padding: initial;
+        background-color: transparent;
+        opacity: initial;
+        transform: initial;
+        padding-top: var(--margin-md);
+        width: 100%;
+        padding-left: var(--margin-md);
+    }
+
+    .nav a {
+        margin-top: -10px;
+    }
+
+    .menu ul li {
+        width: max-content;
+
+    }
+
+    .menu ul li:hover {
+        transform: translateY(-5px);
+        background-color: none;
+    }
+
+    .menu > .list {
+        flex-direction: row;
+        height: fit-content;
+    }
+
+    .products {
+    margin: 0;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: .5em 2em;
+    /* border: 1px solid var(--light-color); */
+    border-radius: 8px;
+    box-shadow: 0 0 10px 1px var(--light-color);
+    margin-left: -20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/*     
+    .about-invite {
+        width: 
+    } */
+
+    .screen-lg-hidden {
+        display: none;
+    }
+
+    .screen-sm-hidden {
+        display: block;
+    }
+
+    .sign-up-btn {
+        padding: .4rem;
+        color: white;
+    }
+
+    .btn.fancy-border:hover::before{
+        animation: animate_border .50s linear infinite;
+    }
+
+    @keyframes animate_border {
+        to {
+            transform: translateX(-50%);
+        }
+        
+    }
+
+
+/* what is vizion */
+
+.whatIsVizion {
+    background-color: var(--primary-background-color);
+    display: flex;
+    color: #135058;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3em;
+    /* margin-block: var(--margin-md); */
+    margin-top: 5em;
+}
+
+.vizion-descrip {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: var(--margin-md);
+    padding-inline: var(--margin-md);
+    margin-block: 5em;
+    gap: var(--margin-md);
+}
+
+.vizion-descrip-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--light-color-alt);
+    gap: 1em;
+    padding-block: 3em;
+    margin-block: var(--margin-md);
+    margin-top: 25vh;
+    width: 90vw;
+    margin-inline: auto;
+}
+
+.vizion-descrip-title {
+    font-size: 1.5em;
+}
+
+/* .crypto-wp-1 {
+} */
+
+.start-trading-hl {
+    margin: 3em auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+.crypto-laptop-wp {
+    border: 3px solid var(--light-color-alt);
+    padding-right: 4em;
+    padding-top: 4em;
+    margin-right: 4em;
+}
+
+.start-trading-note {
+    animation: startTrading 2s infinite ease-in-out;
+}
+
+@keyframes startTrading {
+    0% {
+        transform: scale(1.5);
+        transform: rotate(315deg);
+    }
+
+    20% {
+        transform: scale(1);
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: scale(1.5);
+        transform: rotate(315deg);
+    }
+
+    70% {
+        transform: scale(1);
+        transform: rotate(0);
+    }
+}
+
+.vizion-descrip-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1em;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
+.slide-in {
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.slide-in.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide-out {
+    transform: translateX(50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.slide-out.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.jump-in {
+    transform: translateY(50%);
+    opacity: 0;
+    transition: opacity 250ms ease-in,
+     transform 400ms ease-in;
+}
+
+.jump-in.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.descrip-box {
+    background-color: #119da4;
+    color: var(--primary-background-color);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5em;
+}
+
+.descrip-box img {
+    width: 50px;
+}
+
+
+/* price-column */
+
+.top-crypto {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+    margin: 0;
+    overflow-x: scroll;
+}
+
+.header2 {
+    display: none;
+}
+
+.price-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.price-column-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4em;
+    padding-block: 1.5em;
+}
+
+.popular-coins {
+    cursor: pointer;
+    color: var(--light-color-alt);
+}
+
+.top-Gainers {
+    cursor: pointer;
+    color: var(--light-color-alt);
+}
+
+.top-losers {
+    cursor: pointer;
+    color: var(--light-color-alt);
+}
+
+.rank .title {
+    cursor: pointer;
+}
+
+.rank .title:hover {
+    background-color: rgba(255, 255, 255, .05);
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    height:  2em;
+    width:  8em;
+    border-radius: 8px;
+}
+
+
+
+.coin-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.coin-box ul {
+    
+}
+
+.coin-box ul li {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    margin-block: 1.5em;
+}
+
+.coin-box ul li:hover {
+    background-color: rgba(255, 255, 255, .05);
+    border-radius: 8px;
+}
+
+.coin-box ul li img {
+    width: 30px;
+    height: 30px;
+}
+
+.coin-box ul li .price-name {
+    width: 150px;
+}
+
+.coin-box ul li .crypto-short {
+    width: 5em;
+}
+
+.coin-box ul li .price {
+    width: 8em;
+}
+
+.top-Gainers {
+    display: none;
+}
+
+.price-column-box {
+    position: absolute;
+    display: flex;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.price-column-box {
+    position: relative;
+}
+
+.price-column-box.activated {
+    display: none;
+}
+
+/* .tables {
+    margin-top: ;
+} */
+
+.table {
+    background-color:transparent;
+    position: static;
+    font-size: 0.2em;
+}
+.table thead th {
+    color: #946c00;
+}
+.table tbody {
+    background-color: transparent;
+}
+
+#leaderboard #cryptocurrencies {
+    position: static;
+}
+
+.cryptocurrency {
+    position: static;
+}
+
+#leaderboard #cryptocurrencies tr {
+    display:block;
+    /* clear: both; */
+    position: absolute;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#leaderboard #cryptocurrencies tr:hover {
+    background-color: rgba(255, 255, 255, .05);
+    transition: none;
+}
+
+.rank{
+    width: 60px;
+}
+.name{
+    width: 150px;
+}
+.image{
+    width: 40px;
+}
+.symbol{
+    width: 80px;
+    /* margin-left: ; */
+}
+.price{
+    width: 100px;
+}
+.market_cap{
+    width: 150px;
+}
+.circulating_supply{
+    width: 170px;
+}
+.volume_24h{
+    width: 140px;
+}
+.percent_change_24h{
+    width: 100px;
+}
+
+.cryptocurrency {
+    text-align: center;
+}
+
+.cryptocurrency .symbol{
+    text-transform: uppercase;
+}
+
+.cryptocurrency .image{
+    width: 30px;
+    height: 30px;
+}
+
+
+#leaderboard {
+    display: none;
+    position: relative; 
+    height: 3445px;
+    margin-inline: auto;
+}
+
+#leaderboard2 {
+    display: none;
+    position: relative;
+    /* margin-top: px; */
+    margin-inline: auto;
+    height: 3445px;
+}
+
+#leaderboard.activated {
+    display: table;
+}
+
+#leaderboard2.activated {
+    display: table;
+}
+
+#leaderboard2 #cryptocurrencies2 tr {
+    display: block;
+    /* clear: both; */
+    position: absolute;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#leaderboard2 #cryptocurrencies2 tr:hover {
+    background-color: rgba(255, 255, 255, .05);
+    transition: none;
+}
+
+/* #leaderboard{
+    position: relative; 
+    height: 3445px;
+    margin-inline: auto;
+}
+
+#leaderboard2 {
+    position: relative;
+    margin-top: -3445px;
+    margin-inline: auto;
+    height: 3445px;
+} */
+
+.older-posts-grid-wrapper {
+    margin: 0;
+    grid-template-columns: repeat(2,1fr);
+}
+
+
+/* how to use */
+.How-to-use {
+    width: 75%;
+    color: #135058;
+    padding: 2em;
+    margin: auto;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+}
+
+.How-to-use-title {
+    font-size: 2em;
+}
+
+.How-to-use-descript {
+    margin-block: 1em;
+    color: #119da4;
+    font-family: "Roboto";
+}
+
+.create-account-how-descript {
+    font-family: "Roboto";
+}
+
+.create-account-how-img {
+    width: 10vw;
+    height: 15vh;
+    border: 3px solid #135058;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.how-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.create-account-how {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    gap: 3em;
+}
+
+.create-account-how-spacer {
+    transform: rotate(90deg);
+    width: 1em;
+    margin-left: 22vw;
+}
+
+.create-account-how-spacer2 {
+    transform: rotate(90deg);
+    width: 1em;
+    margin-left: 24vw;
+}
+
+.ri-guide-line {
+    font-size: 2em;
+}
+
+.ri-user-add-line,
+.ri-refund-line,
+.ri-funds-line {
+    font-size: 2em;
+}
+
+/* web-stat */
+.web-stat {
+    width: 75%;
+    padding: 2em;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+}
+
+.stat h1{
+    font-size: 3em;
+}
+
+/* Autoplay swiper */
+
+section.testimonial {
+    margin-top: 5em;
+    position: relative;
+    font-family: "Roboto";
+    background-color: var(--transparent-light-color);
+    width: 100%;
+    height: 40vh;
+    /* overflow-x: hidden; */
+}
+
+.swiper-wrapper {
+    margin-block: 3em;
+}
+
+.swiper-slide {
+    margin-top: 7em;
+    height: 20vh;
+}
+
+.swiper-slide .swiper-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 99999999999;
+}
+
+.swiper-slide .swiper-image {
+    width: 75px;
+    height: 75px;
+    margin-top: -15vh;
+    border-radius: 50px;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.swiper-5 div.swiper-slide {
+    margin-top: -3vh;
+  padding: 3em 1em;
+  color: var(--light-color-alt);
+  text-align: center;
+  font-size: 1.1em;
+  outline: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+div.swiper-5 .swiper-button-prev {
+  background: none;
+  color: #0c7489;
+}
+div.swiper-5 .swiper-button-prev:before {
+  position: absolute;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+}
+div.swiper-5 .swiper-button-next {
+  background: none;
+  color: #0c7489;
+}
+div.swiper-5 .swiper-button-next:before {
+  position: absolute;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.written-testimony{
+    padding-inline: 6em;
+}
+
+.written-testimony span i {
+    font-size: 3.5rem;
+}
+
+.testi-liner {
+    height: 3px;
+    width: 10vw;
+    border-radius: 50px;
+    background-image: linear-gradient(
+        115deg, #119da4, #d7d9ce);
+}
+
+.footer-container {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+}
+
+</style>
+
+
+  <body>
+    
+    <!--navbar-->
+<aside class="allHeaders">
+<section class="navbar-header">    
+    <navbar class="navbar navbar1" id="navbar">
+
+        <nav class="nav container">
+            
+            <a href="index.html">
+                <h2 class="logo">VIZION</h2>
+            </a>
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="#" class="list-link current">Home</a>
+                    </li>
+                    <li class="list-item pr">
+                        <a href="#" class="list-link"><span class="product-arrow">Products <span class="arrow"><i class="ri-arrow-drop-right-line"></i></span></span></span></a>
+
+                        <ul class="products">
+                            <li>Swap</li>
+                            <li>P2P</li>
+                            <li>Forum</li>
+                            <li>Earn Vizion</li>
+                        </ul>
+                    </li>
+                    <li class="list-item pr">
+                        <a href="#" class="list-link"><span class="product-arrow">Resources <span class="arrow"><i class="ri-arrow-drop-right-line"></i></span></span></span></a>
+
+                        <ul class="products">
+                            <li>FAQ</li>
+                            <li>Support</li>
+                            <li>Blog</li>
+                        </ul>
+                    </li>
+                    <li class="list-item about-invite">
+                        <a href="#" class="list-link">Referral</a>
+                    </li>
+                    <li class="list-item about-invite">
+                        <a href="#" class="list-link">About</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Login</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </navbar>
+
+
+    <header>
+
+        <div class="titles">
+
+            <h2><span class="title-buy"><div class="b">B</div><div class="u">u</div><div class="y">y</div></span> and Sell<br> Cryptocurrencies at a very fast rate</h2>
+
+            <div class="title-descrip">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>
+                 Magni nisi doloribus explicabo quia consectetur ex.
+            </div>
+        </div>
+
+        
+
+        <button class="get-started btn">
+            Get Started
+        </button>
+
+        
+    </header>
+    
+</section>
+
+
+<section class="navbar-header2">
+    <navbar class="navbar navbar2" id="navbar2">
+
+        <nav class="nav2 container">
+            <div class="list list-right">
+                <button class="btn place-items-center" id="theme-toggle-btn">
+                    <i class="ri-sun-line sun-icon"></i>
+                    <i class="ri-moon-line moon-icon"></i>
+                </button>
+
+                <button class="btn place-items-center" id="search-icon">
+                    <i class="ri-search-line"></i>
+                </button>
+
+                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+                    <i class="ri-menu-3-line open-menu-icon"></i>
+                    <i class="ri-close-line close-menu-icon"></i>
+                </button>
+
+                <a href="#" class="list-link screen-sm-hidden">Login</a>
+                <a href="#" class="list-link screen-sm-hidden btn sign-up-btn fancy-border">
+                    <span>Sign Up</span>
+                </a>
+            </div>
+        </nav>
+    </navbar>
+
+    <div class="header2">
+
+        <div class="top-crypto">
+            <div class="coin">
+                <img src="./bitcoin-btc-logo.png" alt="">
+    
+            <div class="price-curr"> 
+                <h3>$ <span class="bitcoin"></span></h3>
+                <p>Bitcoin</p>
+            </div>
+            </div>
+    
+            <div class="coin">
+                <img src="./ethereum.png" alt="">
+    
+            <div class="price-curr">
+                <h3>$ <span id="ethereum"></span></h3>
+                <p>Ethereum</p>
+            </div>
+            </div>
+    
+            <div class="coin">
+                <img src="./dogecoin.png" alt="">
+    
+            <div class="price-curr">
+                <h3>$ <span id="dogecoin"></span></h3>
+                <p>Dogecoin</p>
+            </div>
+            </div>
+    
+            <div class="coin">
+                <img src="./solana-sol-logo.png" alt="">
+    
+            <div class="price-curr">
+                <h3>$ <span id="solana"></span></h3>
+                <p>Solana</p>
+            </div>
+            </div>
+    
+        </div>
+    </div>
+</section>
+
+</aside>
+
+
+<!-- what is vizion -->
+
+<section class="whatIsVizion container">
+
+    <div class="vizion-descrip">
+
+        <img src="./investors.jpg" alt="" class="crypto-wp-1 slide-in">
+
+        <div class="vizion-descrip-main">
+        <h2 class="vizion-descrip-title jump-in"> WHAT IS VIZION</h2>
+
+        <p class="jump-in">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Tenetur culpa rem nulla eum mollitia,
+             fuga adipisci quidem deleniti! Quasi, laborum!
+        </p>
+
+        <p class="jump-in">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Corporis mollitia recusandae facere dolorem delectus ab blanditiis
+             quod quibusdam natus assumenda sed numquam itaque odio tenetur,<br> similique consectetur, maiores iusto deserunt?
+        </p>
+
+        <p class="jump-in">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem unde inventore eum accusantium velit veniam neque delectus consequatur. Provident, esse consequatur quaerat vero officiis explicabo ratione incidunt et sint, temporibus omnis ullam dolorem harum odit,
+             maxime delectus totam optio nihil natus. Officiis similique animi nesciunt ut esse provident assumenda aut.
+        </p>
+        </div>
+    </div>
+
+    <div class="vizion-descrip-box">
+
+        <a href="" class="descrip-box fade-in">
+
+            <img src="./fast.png" alt="">
+
+            <h3>Fast Buy & Sell</h3>
+
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, nam!</p>
+        </a>
+
+        <a href="" class="descrip-box fade-in">
+
+            <img src="./safe.png" alt="">
+
+            <h3>Safe</h3>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, deserunt?</p>
+        </a>
+
+        <a href="" class="descrip-box fade-in">
+
+            <img src="./list.png" alt="">
+
+            <h3>Numerous Coin List</h3>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, ducimus.</p>
+        </a>
+
+        <a href="" class="descrip-box fade-in">
+
+            <img src="./care.png" alt="">
+
+            <h3>Customer Care <br>24/7</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, delectus?</p>
+        </a>
+    </div>
+</section>
+
+
+
+
+
+<!-- Columns of Prices -->
+
+
+
+    <div class="price-column-title fade-in">
+        
+        
+        <div class="popular-coins title">Popular Coins</div>
+        <div class="top-Gainers title">Top Gainers</div>
+        <div class="top-losers title">Our Listed Coins</div>
+    </div>
+
+    <div class="price-column-box">
+        
+        <div class="price-popular-coins coin-box">
+
+            <ul>
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./bitcoin-btc-logo.png" alt="">
+                    <h3 class="price-name"> Bitcoin</h3>
+                    <h3 class="crypto-short">BTC</h3>
+                    <h3 class="price">$ <span id="bitcoin2"></span></h3>
+                    <h3 class="hrsChart24"><span class="hrsChartAll" id="bitcoinChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp1"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown1"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./ethereum.png" alt="">
+                    <h3 class="price-name"> Ethereum</h3>
+                    <h3 class="crypto-short">ETH</h3>
+                    <h3 class="price">$ <span id="ethereum2"></span></h3>
+                    <h3 class="hrsChart24"><span  class="hrsChartAll" id="ethereumChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp2"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown2"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./cardano-ada-logo.png" alt="">
+                    <h3 class="price-name"> Cardano</h3>
+                    <h3 class="crypto-short">ADA</h3>
+                    <h3 class="price">$ <span id="cardano"></span></h3>
+                    <h3 class="hrsChart24"><span class="hrsChartAll" id="cardanoChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp3"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown3"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./xrp.png" alt="">
+                    <h3 class="price-name"> Ripple</h3>
+                    <h3 class="crypto-short">XRP</h3>
+                    <h3 class="price">$ <span id="ripple"></span></h3>
+                    <h3 class="hrsChart24"><spa class="hrsChartAll"n id="rippleChart"></spa>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp4"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown4"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./dogecoin.png" alt="">
+                    <h3 class="price-name"> Dogecoin</h3>
+                    <h3 class="crypto-short">DOGE</h3>
+                    <h3 class="price">$ <span id="dogecoin2"></span></h3>
+                    <h3 class="hrsChart24"><span  class="hrsChartAll"id="dogecoinChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp5"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown5"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./litecoin-ltc-logo.png" alt="">
+                    <h3 class="price-name"> Litecoin</h3>
+                    <h3 class="crypto-short">LTC</h3>
+                    <h3 class="price">$ <span id="litecoin"></span></h3>
+                    <h3 class="hrsChart24"><span  class="hrsChartAll" id="litecoinChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp6"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown6"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./polkadot-new-dot-logo.png" alt="">
+                    <h3 class="price-name"> Polkadot</h3>
+                    <h3 class="crypto-short">DOT</h3>
+                    <h3 class="price">$ <span id="polkadot"></span></h3>
+                    <h3 class="hrsChart24"><span  class="hrsChartAll" id="polkadotChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp7"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown7"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./solana-sol-logo.png" alt="">
+                    <h3 class="price-name"> Solana</h3>
+                    <h3 class="crypto-short">SOL</h3>
+                    <h3 class="price">$ <span id="solana2"></span></h3>
+                    <h3 class="hrsChart24"><span class="hrsChartAll" id="solanaChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp8"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown8"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./bnb-bnb-logo.png" alt="">
+                    <h3 class="price-name"> Binance Coin</h3>
+                    <h3 class="crypto-short">BNB</h3>
+                    <h3 class="price">$ <span id="binancecoin"></span></h3>
+                    <h3 class="hrsChart24"><span class="hrsChartAll" id="binancecoinChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp9"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown9"></i>
+                    </div>
+                </li>
+
+                <li class="fade-in">
+                    <img class="popularCoinImg" src="./tether-usdt-logo.png" alt="">
+                    <h3 class="price-name"> Tether</h3>
+                    <h3 class="crypto-short">USDT</h3>
+                    <h3 class="price">$ <span id="tether"></span></h3>
+                    <h3 class="hrsChart24"><span class="hrsChartAll" id="tetherChart"></span>%</h3>
+                    <div class="arrowIndicate">
+                        <i class="ri-arrow-up-s-fill arrowUp"  id="arrowUp10"></i>
+                        <i class="ri-arrow-down-s-fill arrowDown" id="arrowDown10"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+
+
+        <!-- create a table here -->
+    <table class="table is-narrow is-hoverable price-top-Gainers" id="leaderboard">
+        <thead>
+            <tr>
+                <th class="rank"><abbr title="Position">Rank</abbr></th>
+                <th class="image">Logo</th>
+                <th class="name">Name</th>
+                <th class="symbol">Symbol</th>
+                <th class="price">Price(USD)</th>
+                <th class="market_cap">Market Cap</th>
+                <th class="circulating_supply">Circulating Supply</th>
+                <th class="volume_24h">Volume(24h)</th>
+                <th class="percent_change_24h">24h %</th>
+            </tr>
+        </thead>
+        <tbody id="cryptocurrencies">
+        </tbody>  
+    </table>
+
+
+    <table class="table is-narrow is-hoverable price-top-losers" id="leaderboard2">
+        <thead>
+            <tr>
+                <th class="rank"><abbr title="Position">Rank</abbr></th>
+                <th class="image">Logo</th>
+                <th class="name">Name</th>
+                <th class="symbol">Symbol</th>
+                <th class="price">Price(USD)</th>
+                <th class="market_cap">Market Cap</th>
+                <th class="circulating_supply">Circulating Supply</th>
+                <th class="volume_24h">Volume(24h)</th>
+                <th class="percent_change_24h">24h %</th>
+            </tr>
+        </thead>
+        <tbody id="cryptocurrencies2">
+        </tbody>  
+    </table>
+
+    <h6 class="powererd-cr">Powered by coinGecko</h6><br><br>
+
+
+   <!-- Crypto chart -->
+
+    <Section class="cryptoChartToday">
+
+        <h2 class="cryptoChartToday-title">Crytocurrency Chart Today</h2>
+
+        <iframe class="cryptoChartDark" id="cryptoChartDark" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b2d35&symbol=COINBASE%3ABTCUSD&interval=1&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=BB%40tv-basicstudies&theme=dark&style=9&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=topbinaryfx.live&utm_medium=widget_new&utm_campaign=chart&utm_term=COINBASE%3ABTCUSD"></iframe>
+        <iframe class="cryptoChartLight light-theme" id="cryptoChartLight" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_7ad84&symbol=COINBASE%3ABTCUSD&interval=1&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=BB%40tv-basicstudies&theme=light&style=9&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=topbinaryfx.live&utm_medium=widget_new&utm_campaign=chart&utm_term=COINBASE%3ABTCUSD"></iframe>
+    </Section><br><br>
+
+    <h6 class="powererd-cr">Powered by coinbase</h6><br><br>
+
+
+<!--older post-->
+<section class="older-posts section container">
+
+    <div class="container">
+
+        <h2 class="section-title slide-in" data-name="Yeah, You might have">CRYPTO NEWS</h2>
+
+        <div class="older-posts-grid-wrapper d-grid">
+
+
+            <a href="#" class="article d-grid slide-in">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./bitcoin news.jpg" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">Crypto Price Today LIVE: Bitcoin, Ethereum, Polkadot, Dogecoin shed up to 4%</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+
+            <a href="#" class="article d-grid slide-out">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./stablecoin-overview-banner.jpg" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">Crypto News Today: Stablecoin Merchant Adoption, USDC and EverGrow Coin</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+
+            <a href="#" class="article d-grid slide-in">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./citigroup.jpg" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">High Volatility Causes a Risk to Crypto-Backed Mortgages: Citigroup</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+
+            <a href="#" class="article d-grid slide-out">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./Dip.png" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">Bitcoin Dipped Below $19K: Crypto Eyes Another Red Week (Market Watch)</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+
+            <a href="#" class="article d-grid slide-in">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./celcius.webp" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">Celsius Lays Off 150 Employees as Crypto Winter Deepens (Report)</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+
+            <a href="#" class="article d-grid slide-out">
+                <div class="older-posts-article-image-wrapper">
+                    <img src="./blockfi.jpeg" alt="" class="article-image">
+                </div>
+
+                <div class="article-data-container">
+                    
+                    <div class="article-data">
+                        <span>July 3rd, 2022</span>
+                        <span class="article-data-spacer"></span>
+                        <span>12 mins ago</span>
+                    </div>
+
+                    <h3 class="title article-title">BlockFi Provides Details on Potential FTX Purchase</h3>
+                    <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere ea quibusdam quis commodi officia.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="see-more-container slide-in" style="color:brown">
+            <a href="#" class="btn see-more-btn place-items-center">
+
+                View More <i class="ri-arrow-right-circle-line"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="start-trading-hl">
+    <img src="./tech-daily-ztYmIQecyH4-unsplash-removebg-preview.png" class="crypto-laptop-wp slide-in" alt="">
+
+    <h1 class="start-trading-note slide-out">
+        Start<br> Trading<br> Now!
+    </h1>
+ </section>
+
+
+ <section class="container How-to-use fade-in">
+
+    <h2 class="How-to-use-title fade-in">
+        Let's Get Started
+    </h2>
+
+    <h3 class="How-to-use-descript fade-in">
+
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam error tempore modi, optio doloremque animi necessitatibus doloribus quae. Accusantium, numquam.
+    </h3>
+
+    <div class="How-to-use-box">
+
+        <div class="create-account-how">
+
+            <div class="create-account-how-img fade-in">
+
+                <i class="ri-user-add-line how-icon fade-in"></i>
+            </div>
+            <h2 class="create-account-how-descript fade-in"> 1. Create account and verify</h2>
+        </div>
+
+        <div class="create-account-how-spacer">
+
+            <i class="ri-guide-line fade-in"></i>
+        </div>
+
+        <div class="create-account-how">
+
+            <div class="create-account-how-img fade-in">
+
+                <i class="ri-refund-line how-icon fade-in"></i>
+            </div>
+            <h2 class="create-account-how-descript fade-in"> 2. Fund Your Account</h2>
+        </div>
+
+        <div class="create-account-how-spacer2">
+
+            <i class="ri-guide-line fade-in"></i>
+        </div>
+
+        <div class="create-account-how">
+
+            <div class="create-account-how-img fade-in">
+
+                <i class="ri-funds-line how-icon fade-in"></i>
+            </div>
+            <h2 class="create-account-how-descript fade-in"> 3. Start Trading</h2>
+        </div>
+    </div>
+
+ </section>
+
+ 
+
+
+
+ <section class="web-stat container jump-in">
+
+    <div class="stat stat-1 jump-in">
+        <h1>$70 Billion</h1>
+        <p>
+            Crypto Exchanged
+        </p>
+    </div>
+
+    <div class="stat stat-2 jump-in">
+        <h1>7</h1>
+        <p>
+            in All<br>Continent
+        </p>
+    </div>
+
+    <div class="stat stat-3 jump-in">
+        <h1>130</h1>
+        <p>
+            Countries Supported
+        </p>
+    </div>
+
+    <div class="stat stat-4 jump-in">
+        <h1>20,000+</h1>
+        <p>
+            Active Users
+        </p>
+    </div>
+ </section>
+
+<!-- Testimonial -->
+ <section class="container testimonial my-5 px-5 py-3 fade-in">
+    <div class="swiper-5 swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          
+            <div class="swiper-image">
+                <img src="./testi-man-1.webp" alt="">
+            </div>
+
+            <div class="written-testimony">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam recusandae accusantium ad, explicabo aliquid eos fugit autem?</h3>
+                <span><i class="ri-double-quotes-r"></i></span>
+            </div>
+
+            <div class="testi-liner"></div>
+        </div>
+        <div class="swiper-slide">
+          
+            <div class="swiper-image">
+                <img src="./testi-man-2.jpg" alt="">
+            </div>
+
+            <div class="written-testimony">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quis voluptatum doloribus ipsum unde minima sit omnis beatae dolorum ipsam.</h3>
+                <span><i class="ri-double-quotes-r"></i></span>
+            </div>
+
+            <div class="testi-liner"></div>
+        </div>
+        <div class="swiper-slide">
+          
+            <div class="swiper-image">
+                <img src="./testi-woman-1.jpg" alt="">
+            </div>
+
+            <div class="written-testimony">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut dicta, quasi impedit cumque itaque magnam!</h3>
+                <span><i class="ri-double-quotes-r"></i></span>
+            </div>
+
+            <div class="testi-liner"></div>
+        </div>
+        <div class="swiper-slide">
+          
+            <div class="swiper-image">
+                <img src="./testi-man-3.jpg" alt="">
+            </div>
+
+            <div class="written-testimony">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum laborum accusantium a, vitae eligendi, sed, atque in suscipit iure doloremque repudiandae sit officiis deleniti aut dicta voluptas pariatur maxime incidunt.</h3>
+                <span><i class="ri-double-quotes-r"></i></span>
+            </div>
+
+            <div class="testi-liner"></div>
+        </div>
+        <div class="swiper-slide">
+          
+            <div class="swiper-image">
+                <img src="./testi-woman-2.webp" alt="">
+            </div>
+
+            <div class="written-testimony">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, fugiat! Cumque vitae eveniet neque odio nam quia beatae nemo aliquam doloremque?</h3>
+                <span><i class="ri-double-quotes-r"></i></span>
+            </div>
+
+            <div class="testi-liner"></div>
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  
+  
+  <!--footer-->
+  <footer class="footer section">
+
+    <div class="footer-container container d-grid">
+
+        <div class="company-data">
+            <a href="index.html">
+                <h2 class="logo">VIZION</h2>
+            </a>
+            <p class="company-description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quas totam harum tempore dolorem blanditiis ipsa, sunt at, eos amet veritatis aut! Tempore at qui veritatis optio sequi nam asperiores.
+            </p>
+
+            <ul class="list social-media">
+                <li class="list-item">
+                    <a href="#" class="list-link">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-reddit-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+
+                    <a href="#" class="list-link">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <span class="copyright-notice">&copy; 2022 Vizion. copyrights all reserved</span>
+        </div>
+
+        <div>
+            <h6 class="title footer-title">Tags</h6>
+
+            <ul class="list footer-list">
+                <li class="list-item">
+                    <a href="#" class="list-link">Movies</a>
+                </li>
+
+                <li class="list-item">
+                    <a href="#" class="list-link">Sports</a>
+                </li>
+
+                <li class="list-item">
+                    <a href="#" class="list-link">Fashion</a>
+                </li>
+
+                <li class="list-item">
+                    <a href="#" class="list-link">Technology</a>
+                </li>
+
+                <li class="list-item">
+                    <a href="#" class="list-link">Education</a>
+                </li>
+
+                <li class="list-item">
+                    <a href="#" class="list-link">Arts</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+        <h6 class="title footer-title">Company</h6>
+
+        <ul class="list footer-list">
+            <li class="list-item">
+                <a href="#" class="list-link">Home</a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-link">Review</a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-link">News</a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-link">Membership</a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-link">Contact</a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-link">Other Company Links</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    </div>
+</footer>
+ 
+
+
+
+      <!--swiper.js-->
+      <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+      <!--bootstap js  -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  
+      <!--custom script-->
+      <script src="./script.js"></script>
+
+      <!-- load in jquery script to use jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+</body>
+</html>
